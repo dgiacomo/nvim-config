@@ -20,8 +20,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-repeat'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " Color config
@@ -313,3 +313,7 @@ command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 " Repeat vim
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 nnoremap \ :Ag<SPACE>
+
+set encoding=UTF-8
+let g:webdevicons_enable_startify = 1
+set guifont=Hack\ Nerd\ Font:h11
