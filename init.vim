@@ -1,6 +1,7 @@
 call plug#begin('~/.config/nvim/plugged')
 " Installed plugins
 Plug 'morhetz/gruvbox'
+Plug 'jacoborus/tender.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'chipsenkbeil/vimwiki-server.nvim', { 'tag': 'v0.1.0-alpha.5' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
