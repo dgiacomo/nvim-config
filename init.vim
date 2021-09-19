@@ -1,6 +1,8 @@
 call plug#begin('~/.config/nvim/plugged')
 " Installed plugins
 Plug 'morhetz/gruvbox'
+Plug 'vimwiki/vimwiki'
+Plug 'chipsenkbeil/vimwiki-server.nvim', { 'tag': 'v0.1.0-alpha.5' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -23,6 +25,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-repeat'
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
+
+function! IsOnHost(hostname)
+    return match(system("echo -n $HOST"), a:hostname) >= 0
+endfunction
 
 " Color config
 if (has("termguicolors"))
@@ -317,3 +323,20 @@ nnoremap \ :Ag<SPACE>
 set encoding=UTF-8
 let g:webdevicons_enable_startify = 1
 set guifont=Hack\ Nerd\ Font:h11
+
+" -----------------------------------
+" Vimwiki
+
+if IsOnHost('DavidsMacmini.monkeybrains.net')
+ let g:vimwiki_list = [
+                        \{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'},
+                        \{'path': '~/vimwiki_personal', 'syntax': 'markdown', 'ext': '.md'},
+                \]
+else
+ let g:vimwiki_list = [
+                        \{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'},
+                \]
+endif
+
+let g:vimwiki_folding = 'list'
+let g:vimwiki_hl_headers = 1  " use alternating colours for different heading levels
