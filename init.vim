@@ -251,6 +251,7 @@ let g:coc_global_extensions = [
       \ 'coc-snippets', 
       \ 'coc-lua',
       \ 'coc-python',
+      \ 'coc-go',
       \ 'coc-java',
       \ 'coc-eslint']
 " " To go back to previous state use Ctrl+O
