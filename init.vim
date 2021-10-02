@@ -3,6 +3,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'tools-life/taskwiki'
 Plug 'chipsenkbeil/vimwiki-server.nvim', { 'tag': 'v0.1.0-alpha.5' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -373,3 +374,18 @@ endif
 
 let g:vimwiki_folding = 'list'
 let g:vimwiki_hl_headers = 1  " use alternating colours for different heading levels
+let g:vimwiki_global_ext = 0 " don't treat all md files as vimwiki
+let g:vimwiki_markdown_link_ext = 1 " add markdown file extension when generating links
+let g:taskwiki_markdown_syntax = 'markdown'
+
+autocmd BufNewFile */diary/????-??-??.md call s:new_vimwiki_diary_template()
+
+function s:new_vimwiki_diary_template()
+" If it's Friday, open a end of week lookback template
+   if system('date +%u') == 5
+        read ~/vimwiki/Diary\ TemplateEndOfWeek.md | execute "normal ggdd"
+    else
+        read  ~/vimwiki/Diary\ Template.md | execute "normal ggdd"
+    end
+endfunction
+
