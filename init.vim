@@ -33,6 +33,7 @@ Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'overcache/NeoSolarized'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 function! IsOnHost(hostname)
@@ -75,9 +76,11 @@ endif
 " Neovim config
 syntax enable
 syntax on
+set scrolloff=8 " start to scroll as you get close to bottom of screen
 set undodir=~/.config/nvim/undodir " set undotree file directory
 set undofile " set undotree to save to file
-set number relativenumber " set line number
+set number relativenumber " sets line numbers relative to where you are up/downr
+set nu " shows the line number you are on
 set nowrap " set no soft wrap
 set tabstop=2 softtabstop=2 " set tab size
 set shiftwidth=2 " affect amount of indentation
