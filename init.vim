@@ -13,7 +13,7 @@ Plug 'ap/vim-css-color'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
-Plug 'ajh17/VimCompletesMe'
+"Plug 'ajh17/VimCompletesMe'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'lambdalisue/suda.vim'
@@ -34,6 +34,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'overcache/NeoSolarized'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'google/vim-maktaba' " Needed by vim-bazel plugin
+Plug 'bazelbuild/vim-bazel'
+Plug 'cappyzawa/starlark.vim'
+Plug 'svermeulen/vim-macrobatics'
 call plug#end()
 
 function! IsOnHost(hostname)
@@ -258,10 +262,13 @@ let g:coc_global_extensions = [
       \ 'coc-java',
       \ 'coc-eslint']
 " " To go back to previous state use Ctrl+O
-nmap <silent><leader>gd <Plug>(coc-definition)
+nmap <silent><leader>g <Plug>(coc-definition)
 nmap <silent><leader>gy <Plug>(coc-type-definition)
 nmap <silent><leader>gi <Plug>(coc-implementation)
 nmap <silent><leader>gr <Plug>(coc-references)
+
+" " Add import statements on save
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -299,7 +306,7 @@ endif
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>r <Plug>(coc-rename)
 
 " " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -393,4 +400,13 @@ function s:new_vimwiki_diary_template()
         read  ~/vimwiki/Diary\ Template.md | execute "normal ggdd"
     end
 endfunction
+
+" Disable vim-go go to definition so that COC LSP is uesed
+let g:go_def_mapping_enabled = 0
+
+set conceallevel=0 " So that I can see `` and full urls in markdown files 
+
+
+" --------------------------------
+" vim-macrobatics
 
