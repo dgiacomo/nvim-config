@@ -41,6 +41,7 @@ Plug 'svermeulen/vim-macrobatics'
 Plug 'BurntSushi/ripgrep'
 Plug 'tpope/vim-unimpaired'
 Plug 'idanarye/vim-merginal'
+Plug 'tpope/vim-rhubarb'
 call plug#end()
 
 function! IsOnHost(hostname)
@@ -415,6 +416,6 @@ set conceallevel=0 " So that I can see `` and full urls in markdown files
 
 " --------------------------------
 "  Meginal
-map <leader>gB :MerginalToggle<CR>
+map <leader>gb :MerginalToggle<CR>
 
 
