@@ -38,6 +38,9 @@ Plug 'google/vim-maktaba' " Needed by vim-bazel plugin
 Plug 'bazelbuild/vim-bazel'
 Plug 'cappyzawa/starlark.vim'
 Plug 'svermeulen/vim-macrobatics'
+Plug 'BurntSushi/ripgrep'
+Plug 'tpope/vim-unimpaired'
+Plug 'idanarye/vim-merginal'
 call plug#end()
 
 function! IsOnHost(hostname)
@@ -409,4 +412,9 @@ set conceallevel=0 " So that I can see `` and full urls in markdown files
 
 " --------------------------------
 " vim-macrobatics
+
+" --------------------------------
+"  Meginal
+map <leader>gB :MerginalToggle<CR>
+
 
