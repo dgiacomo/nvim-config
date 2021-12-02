@@ -41,7 +41,9 @@ Plug 'svermeulen/vim-macrobatics'
 Plug 'BurntSushi/ripgrep'
 Plug 'tpope/vim-unimpaired'
 Plug 'idanarye/vim-merginal'
-Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-rhubarb' " Open Github in browser from vim
+Plug 'junegunn/gv.vim' " Git history
+Plug 'AGhost-7/critiq.vim' " Pull Requests in vim 
 call plug#end()
 
 function! IsOnHost(hostname)
@@ -418,4 +420,5 @@ set conceallevel=0 " So that I can see `` and full urls in markdown files
 "  Meginal
 map <leader>gb :MerginalToggle<CR>
 
-
+highlight CocErrorHighlight ctermfg=Red  guifg=#ff0000
+highlight FgCocErrorFloatBgCocFloating ctermfg=Black ctermbg=White guifg=Grey82 guibg=Black
