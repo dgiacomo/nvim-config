@@ -44,6 +44,7 @@ Plug 'idanarye/vim-merginal'
 Plug 'tpope/vim-rhubarb' " Open Github in browser from vim
 Plug 'junegunn/gv.vim' " Git history
 Plug 'AGhost-7/critiq.vim' " Pull Requests in vim 
+Plug 'psf/black', { 'branch': 'stable' }
 call plug#end()
 
 function! IsOnHost(hostname)
@@ -412,6 +413,8 @@ let g:go_def_mapping_enabled = 0
 
 set conceallevel=0 " So that I can see `` and full urls in markdown files 
 
+map <F3> :VimwikiDiaryPrevDay<CR>
+map <F4> :VimwikiDiaryNextDay<CR>
 
 " --------------------------------
 " vim-macrobatics
