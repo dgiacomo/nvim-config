@@ -7,8 +7,8 @@ Plug 'tools-life/taskwiki'
 Plug 'chipsenkbeil/vimwiki-server.nvim', { 'tag': 'v0.1.0-alpha.5' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'w0rp/ale'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'w0rp/ale'
 Plug 'ap/vim-css-color'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
@@ -254,7 +254,17 @@ let g:suda#prefix = ['suda://', 'sudo://', '_://']
 
 " COC
 " " COC extension
-let g:coc_user_config = {}
+let g:coc_user_config = {
+ \   "languageserver": {
+ \    "go": {
+ \      "command": "gopls",
+ \      "rootPatterns": ["go.mod"],
+ \      "trace.server": "verbose",
+ \      "filetypes": ["go"]
+ \    }
+ \  }
+ \ }
+
 let g:coc_global_extensions = [
       \ 'coc-emmet', 
       \ 'coc-css', 
@@ -310,7 +320,7 @@ else
 endif
 
 " " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " " Symbol renaming.
 nmap <leader>r <Plug>(coc-rename)
@@ -408,8 +418,10 @@ function s:new_vimwiki_diary_template()
     end
 endfunction
 
-" Disable vim-go go to definition so that COC LSP is uesed
-let g:go_def_mapping_enabled = 0
+" Disable vim-go go to definition so that COC LSP is used
+let g:go_def_mapping_enabled = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 set conceallevel=0 " So that I can see `` and full urls in markdown files 
 
